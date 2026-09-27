@@ -2,14 +2,14 @@
 	"FileVersion": 3,
 	"Version": 1,
 	"VersionName": "1.0",
-	"FriendlyName": "UnrealGoogleAnalytics",
+	"FriendlyName": "Unreal Google Analytics",
 	"Description": "Support for Google Analytics through HTTP requests ",
-	"Category": "Other",
+	"Category": "Analytics",
 	"CreatedBy": "hzFishy",
 	"CreatedByURL": "https://hzfishy.fr",
-	"DocsURL": "",
+	"DocsURL": "https://github.com/hzFishy/UnrealGoogleAnalytics",
 	"MarketplaceURL": "",
-	"CanContainContent": true,
+	"CanContainContent": false,
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
@@ -17,6 +17,11 @@
 		{
 			"Name": "UnrealGoogleAnalytics",
 			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "UnrealGoogleAnalyticsEditor",
+			"Type": "Editor",
 			"LoadingPhase": "Default"
 		}
 	]
