@@ -19,7 +19,7 @@ public class UnrealGoogleAnalyticsEditor : ModuleRules
             new string[]
             {
                 "CoreUObject", "Engine",
-                "Slate", "SlateCore",
+                "Slate", "SlateCore", "ToolWidgets",
                 "UnrealGoogleAnalytics"
             }
         );

@@ -8,6 +8,10 @@
 #include "Core/UGACoreSettings.h"
 
 
+FUGAEventNameCustomization::FUGAEventNameCustomization():
+	Settings(nullptr)
+{}
+
 TSharedRef<IPropertyTypeCustomization> FUGAEventNameCustomization::MakeInstance()
 {
 	return MakeShared<FUGAEventNameCustomization>();
@@ -54,13 +58,13 @@ TSharedRef<SWidget> FUGAEventNameCustomization::OnGenerateDropdownMenu()
 	
 	for (FName EventName : Settings->EventNames)
 	{
+		if (EventName.IsNone()) { continue; }
+		
 		MenuBuilder.AddMenuEntry(
 			FText::FromString(EventName.ToString()),
 			FText(),
 			FSlateIcon(),
-			FUIAction(
-				FExecuteAction::CreateSP(this, &FUGAEventNameCustomization::OnDropDownEntrySelected, EventName)
-			)
+			FUIAction(FExecuteAction::CreateSP(this, &FUGAEventNameCustomization::OnDropDownEntrySelected, EventName))
 		);
 	}
 	

@@ -9,14 +9,15 @@ class SSimpleComboButton;
 class UNREALGOOGLEANALYTICSEDITOR_API FUGAEventNameCustomization : public IPropertyTypeCustomization
 {
 public:
+	FUGAEventNameCustomization();
+	
 	static TSharedRef<IPropertyTypeCustomization> MakeInstance();
  
 	virtual void CustomizeHeader(TSharedRef<IPropertyHandle> PropertyHandle, FDetailWidgetRow& HeaderRow, IPropertyTypeCustomizationUtils& CustomizationUtils) override;
 	virtual void CustomizeChildren(TSharedRef<IPropertyHandle> PropertyHandle, IDetailChildrenBuilder& ChildBuilder, IPropertyTypeCustomizationUtils& CustomizationUtils) override;
 
 protected:
-	UPROPERTY()
-	TObjectPtr<const UUGACoreSettings> Settings;
+	const UUGACoreSettings* Settings;
 	TSharedPtr<IPropertyHandle> EventNameProperty;
 	TSharedPtr<SSimpleComboButton> DropDownWidget;
 	
