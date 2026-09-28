@@ -5,9 +5,7 @@
 
 
 FUGAAttribute::FUGAAttribute()
-{
-	
-}
+{}
 
 FUGAAttribute::FUGAAttribute(FUGAAttributeKey InKey, FUGAAttributeValue InValue):
 	Key(InKey), Value(InValue)

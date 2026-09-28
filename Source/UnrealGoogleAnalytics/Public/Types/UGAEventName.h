@@ -7,7 +7,7 @@
 
 /** Wrapper for an event name */
 USTRUCT(BlueprintType, DisplayName="Event Name")
-struct FUGAEventName
+struct UNREALGOOGLEANALYTICS_API FUGAEventName
 {
 	GENERATED_BODY()
 	
@@ -16,6 +16,7 @@ public:
 	
 	FUGAEventName(FName InEventName);
 	
+	UPROPERTY()
 	FName EventName;
 	
 	bool operator==(const FUGAEventName& Other) const;

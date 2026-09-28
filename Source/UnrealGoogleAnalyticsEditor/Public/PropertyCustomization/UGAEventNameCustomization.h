@@ -4,7 +4,7 @@
 
 class UUGACoreSettings;
 class SSimpleComboButton;
-
+struct FUGAEventName;
 
 class UNREALGOOGLEANALYTICSEDITOR_API FUGAEventNameCustomization : public IPropertyTypeCustomization
 {
@@ -18,11 +18,11 @@ public:
 
 protected:
 	const UUGACoreSettings* Settings;
-	TSharedPtr<IPropertyHandle> EventNameProperty;
+	FUGAEventName* EventNamePtr;
 	TSharedPtr<SSimpleComboButton> DropDownWidget;
 	
 	
 	TSharedRef<SWidget> OnGenerateDropdownMenu();
-	
 	void OnDropDownEntrySelected(FName Name);
+	FText GetTextDisplay() const;
 };

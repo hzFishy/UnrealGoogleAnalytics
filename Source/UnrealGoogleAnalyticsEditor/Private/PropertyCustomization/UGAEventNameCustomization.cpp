@@ -6,10 +6,12 @@
 #include "IDetailChildrenBuilder.h"
 #include "SSimpleComboButton.h"
 #include "Core/UGACoreSettings.h"
+#include "Types/UGAEventName.h"
 
 
 FUGAEventNameCustomization::FUGAEventNameCustomization():
-	Settings(nullptr)
+	Settings(nullptr), 
+	EventNamePtr(nullptr)
 {}
 
 TSharedRef<IPropertyTypeCustomization> FUGAEventNameCustomization::MakeInstance()
@@ -30,7 +32,9 @@ void FUGAEventNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle> P
 {
 	Settings = GetDefault<UUGACoreSettings>();
 	
-	EventNameProperty = PropertyHandle->GetChildHandle(0);
+	void* ValuePtr;
+	PropertyHandle->GetValueData(ValuePtr);
+	EventNamePtr = static_cast<FUGAEventName*>(ValuePtr);
 	
 	ChildBuilder.AddCustomRow(INVTEXT("")).NameContent()
 		[
@@ -43,13 +47,8 @@ void FUGAEventNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle> P
 				.ToolTipText(INVTEXT("Select an entry"))
 				.HasDownArrow(true)
 				.UsesSmallText(true)
-				.Text_Lambda( [this]()
-				{
-					FName Value;
-					EventNameProperty->GetValue(Value);
-					return FText::FromString(Value.ToString());
-				})
-		];
+				.Text_Raw(this, &FUGAEventNameCustomization::GetTextDisplay)
+		]; 
 }
 
 TSharedRef<SWidget> FUGAEventNameCustomization::OnGenerateDropdownMenu()
@@ -73,5 +72,10 @@ TSharedRef<SWidget> FUGAEventNameCustomization::OnGenerateDropdownMenu()
 
 void FUGAEventNameCustomization::OnDropDownEntrySelected(FName Name)
 {
-	EventNameProperty->SetValue(Name);
+	*EventNamePtr = FUGAEventName(Name);
+}
+
+FText FUGAEventNameCustomization::GetTextDisplay() const
+{
+	return FText::FromName(EventNamePtr->EventName);
 }

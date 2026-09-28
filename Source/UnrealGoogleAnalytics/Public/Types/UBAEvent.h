@@ -19,6 +19,7 @@ public:
 	
 	
 	FUGAEventName Name;
+	
 	/** Parameters */
 	TArray<FUGAAttribute> Attributes;
 };

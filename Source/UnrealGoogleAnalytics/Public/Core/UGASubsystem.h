@@ -10,7 +10,7 @@
 class UUGACoreSettings;
 
 
-UCLASS(DisplayName="Google Analytics Subsystem")
+UCLASS(DisplayName="Google Analytics Subsystem", meta=(Keywords="Google Analytics Subsystem"))
 class UNREALGOOGLEANALYTICS_API UUGASubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
