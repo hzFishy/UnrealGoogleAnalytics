@@ -18,7 +18,7 @@ public class UnrealGoogleAnalytics : ModuleRules
 		{
 			"CoreUObject", "Engine",
 			"Slate", "SlateCore",
-			"DeveloperSettings"
+			"DeveloperSettings", "HTTP"
 		});
 	}
 }

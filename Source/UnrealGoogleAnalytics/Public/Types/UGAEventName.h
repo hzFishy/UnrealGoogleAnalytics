@@ -5,8 +5,10 @@
 #include "UGAEventName.generated.h"
 
 
-/** Wrapper for an event name */
-USTRUCT(BlueprintType, DisplayName="Event Name")
+/** 
+ * Wrapper for an event name 
+ */
+USTRUCT(BlueprintType, DisplayName="Google Analytics Event Name", meta=(HasNativeMake="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetEventNameOptions"))
 struct UNREALGOOGLEANALYTICS_API FUGAEventName
 {
 	GENERATED_BODY()

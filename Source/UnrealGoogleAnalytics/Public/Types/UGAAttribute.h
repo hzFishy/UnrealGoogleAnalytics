@@ -11,7 +11,7 @@
  *  Pair of a Key and a Value. For example for an event this can be perceive as an event parameter.
  *  Value type can be: bool, int32, float, FString, FName.
  */
-USTRUCT(BlueprintType, DisplayName="Google Analytic Attribute Key")
+USTRUCT(BlueprintType, DisplayName="Google Analytic Attribute")
 struct UNREALGOOGLEANALYTICS_API FUGAAttribute
 {
 	GENERATED_BODY()
@@ -21,9 +21,10 @@ public:
 	
 	FUGAAttribute(FUGAAttributeKey InKey, FUGAAttributeValue InValue);
 	
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FUGAAttributeKey Key;
 	
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FUGAAttributeValue Value;
 };

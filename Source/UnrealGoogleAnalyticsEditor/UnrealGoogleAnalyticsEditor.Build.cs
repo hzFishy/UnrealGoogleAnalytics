@@ -11,14 +11,14 @@ public class UnrealGoogleAnalyticsEditor : ModuleRules
         PublicDependencyModuleNames.AddRange(
             new string[]
             {
-                "Core",
+                "Core"
             }
         );
 
         PrivateDependencyModuleNames.AddRange(
             new string[]
             {
-                "CoreUObject", "Engine",
+                "CoreUObject", "Engine", "InputCore",
                 "Slate", "SlateCore", "ToolWidgets",
                 "UnrealGoogleAnalytics"
             }

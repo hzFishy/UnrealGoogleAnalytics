@@ -4,6 +4,7 @@
 
 #include "Modules/ModuleManager.h"
 
+
 class FUnrealGoogleAnalyticsEditorModule : public IModuleInterface
 {
 public:

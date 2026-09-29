@@ -9,7 +9,7 @@
  *  Internally this is a plain FName but it wrapped to allow display customization.
  *  Configure the auto complete dropdown from the settings
  */
-USTRUCT(BlueprintType, DisplayName="Google Analytics Attribute Key")
+USTRUCT(BlueprintType, DisplayName="Google Analytics Attribute Key", meta=(HasNativeMake="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions"))
 struct UNREALGOOGLEANALYTICS_API FUGAAttributeKey
 {
 	GENERATED_BODY()
@@ -20,7 +20,13 @@ public:
 	
 	FUGAAttributeKey(FName InKeyName);
 	
+	UPROPERTY()
 	FName KeyName;
 	
 	bool operator==(const FUGAAttributeKey& OtherKey) const;
+	
+	const char* operator *() const
+	{
+		return TCHAR_TO_UTF8(*KeyName.ToString());
+	}
 };

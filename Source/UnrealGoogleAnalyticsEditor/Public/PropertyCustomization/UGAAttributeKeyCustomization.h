@@ -3,13 +3,13 @@
 #pragma once
 
 class UUGACoreSettings;
-struct FUGAEventName;
+struct FUGAAttributeKey;
 
 
-class UNREALGOOGLEANALYTICSEDITOR_API FUGAEventNameCustomization : public IPropertyTypeCustomization
+class UNREALGOOGLEANALYTICSEDITOR_API FUGAAttributeKeyCustomization : public IPropertyTypeCustomization
 {
 public:
-	FUGAEventNameCustomization();
+	FUGAAttributeKeyCustomization();
 	
 	static TSharedRef<IPropertyTypeCustomization> MakeInstance();
  
@@ -19,7 +19,7 @@ public:
 
 protected:
 	const UUGACoreSettings* Settings;
-	FUGAEventName* EventNamePtr;
+	FUGAAttributeKey* AttributeKeyPtr;
 	TSharedPtr<SComboBox<FName>> DropDownWidget;
 	TSharedPtr<SBox> ComboBoxContent;
 	TArray<FName> Options;

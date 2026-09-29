@@ -6,7 +6,7 @@
 #include "UGAEventName.h"
 
 
-struct FUGAEvent
+struct UNREALGOOGLEANALYTICS_API FUGAEvent
 {
 public:
 	FUGAEvent();

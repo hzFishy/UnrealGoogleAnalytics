@@ -4,7 +4,6 @@
 #include "PropertyCustomization/UGAEventNameCustomization.h"
 #include "DetailWidgetRow.h"
 #include "IDetailChildrenBuilder.h"
-#include "SSimpleComboButton.h"
 #include "Core/UGACoreSettings.h"
 #include "Types/UGAEventName.h"
 
@@ -36,46 +35,67 @@ void FUGAEventNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle> P
 	PropertyHandle->GetValueData(ValuePtr);
 	EventNamePtr = static_cast<FUGAEventName*>(ValuePtr);
 	
+	Options.Reserve(Settings->EventNames.Num());
+	int32 SelectedIndex = -1;
+	for (int32 i = 0; i < Settings->EventNames.Num(); ++i)
+	{
+		const FName EventName = Settings->EventNames[i];
+		
+		if (!EventName.IsValid()) { continue; }
+		
+		Options.Emplace(EventName);
+		
+		if (EventNamePtr->EventName == EventName)
+		{
+			SelectedIndex = i;
+		}
+	}
+	
+	if (SelectedIndex >= 0)
+	{
+		CurrentSelection = Options[SelectedIndex];
+	}
+	
 	ChildBuilder.AddCustomRow(INVTEXT("")).NameContent()
 		[
 			PropertyHandle->CreatePropertyNameWidget()
 		]
 		.ValueContent()
 		[
-			SAssignNew(DropDownWidget, SSimpleComboButton)
-				.OnGetMenuContent(this, &FUGAEventNameCustomization::OnGenerateDropdownMenu)
-				.ToolTipText(INVTEXT("Select an entry"))
+			SAssignNew(DropDownWidget, SComboBox<FName>)
+				.OptionsSource(&Options)
+				.InitiallySelectedItem(CurrentSelection)
+				.ContentPadding(FMargin(4, 2))
+				.MaxListHeight(450)
 				.HasDownArrow(true)
-				.UsesSmallText(true)
-				.Text_Raw(this, &FUGAEventNameCustomization::GetTextDisplay)
-		]; 
+				.OnGenerateWidget_Raw(this, &FUGAEventNameCustomization::HandleGenerateItemWidget)
+				.OnSelectionChanged_Raw(this, &FUGAEventNameCustomization::HandleSelectionChanged)
+				[
+					SAssignNew(ComboBoxContent, SBox)
+				]
+		];
+	
+	RefreshContent();
 }
 
-TSharedRef<SWidget> FUGAEventNameCustomization::OnGenerateDropdownMenu()
+TSharedRef<SWidget> FUGAEventNameCustomization::HandleGenerateItemWidget(FName Name)
 {
-	FMenuBuilder MenuBuilder(true, nullptr, nullptr);
-	
-	for (FName EventName : Settings->EventNames)
-	{
-		if (EventName.IsNone()) { continue; }
-		
-		MenuBuilder.AddMenuEntry(
-			FText::FromString(EventName.ToString()),
-			FText(),
-			FSlateIcon(),
-			FUIAction(FExecuteAction::CreateSP(this, &FUGAEventNameCustomization::OnDropDownEntrySelected, EventName))
-		);
-	}
-	
-	return MenuBuilder.MakeWidget();
+	return SNew(STextBlock)
+		.Text(FText::FromName(Name));
 }
 
-void FUGAEventNameCustomization::OnDropDownEntrySelected(FName Name)
+void FUGAEventNameCustomization::HandleSelectionChanged(FName Name, ESelectInfo::Type Arg)
 {
 	*EventNamePtr = FUGAEventName(Name);
+	CurrentSelection = Name;
+	RefreshContent();
 }
 
-FText FUGAEventNameCustomization::GetTextDisplay() const
+void FUGAEventNameCustomization::RefreshContent()
 {
-	return FText::FromName(EventNamePtr->EventName);
+	if (ComboBoxContent.IsValid())
+	{
+		auto Widget = HandleGenerateItemWidget(CurrentSelection);
+		ComboBoxContent->SetContent(Widget);
+	}
 }

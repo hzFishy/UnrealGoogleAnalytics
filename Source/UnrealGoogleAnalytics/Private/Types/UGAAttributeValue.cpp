@@ -39,6 +39,11 @@ bool FUGAAttributeValue::GetAsBool_Checked() const
 	return Value.Get<bool>();
 }
 
+const bool* FUGAAttributeValue::TryGetAsBool() const
+{
+	return Value.TryGet<bool>();
+}
+
 
 int32 FUGAAttributeValue::GetAsInt() const
 {
@@ -51,6 +56,11 @@ int32 FUGAAttributeValue::GetAsInt_Checked() const
 	return Value.Get<int32>();
 }
 
+const int32* FUGAAttributeValue::TryGetAsInt() const
+{
+	return Value.TryGet<int32>();
+}
+
 float FUGAAttributeValue::GetAsFloat() const
 {
 	return Value.Get<float>();
@@ -60,6 +70,11 @@ float FUGAAttributeValue::GetAsFloat_Checked() const
 {
 	check(Value.IsType<float>());
 	return Value.Get<float>();
+}
+
+const float* FUGAAttributeValue::TryGetAsFloat() const
+{
+	return Value.TryGet<float>();
 }
 
 
@@ -74,6 +89,11 @@ FString FUGAAttributeValue::GetAsString_Checked() const
 	return Value.Get<FString>();
 }
 
+const FString* FUGAAttributeValue::TryGetAsString() const
+{
+	return Value.TryGet<FString>();
+}
+
 
 FName FUGAAttributeValue::GetAsName() const
 {
@@ -84,6 +104,11 @@ FName FUGAAttributeValue::GetAsName_Checked() const
 {
 	check(Value.IsType<FName>());
 	return Value.Get<FName>();
+}
+
+const FName* FUGAAttributeValue::TryGetAsName() const
+{
+	return Value.TryGet<FName>();
 }
 
 FString FUGAAttributeValue::ConvertToString() const

@@ -7,8 +7,6 @@
 UUGACoreSettings::UUGACoreSettings(): 
 	bAutoSetClientId(true), 
 	bAutoStartSession(true),
-	DefaultEngagementTime(100)
-{
-	AttributeKeys.Emplace(UGA::NAME_AttributeKey_ClientId);
-	AttributeKeys.Emplace(UGA::NAME_AttributeKey_SessionId);
-}
+	DefaultEngagementTime(100),
+	EventFlushIntervalTime(5)
+{}

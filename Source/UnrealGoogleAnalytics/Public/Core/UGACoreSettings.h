@@ -8,9 +8,14 @@
 
 namespace UGA
 {
-	inline FName NAME_AttributeKey_ClientId = "client_id";
-	inline FName NAME_AttributeKey_SessionId = "session_id";
-	inline FName NAME_AttributeKey_EngagementTime = "engagement_time_msec";
+	inline FName NAME_ClientId = "client_id";
+	inline const char* ClientId = "client_id";
+	
+	inline FName NAME_SessionId = "session_id";
+	inline const char* SessionId = "session_id";
+	
+	inline FName NAME_EngagementTime = "engagement_time_msec";
+	inline const char* EngagementTime = "engagement_time_msec";
 }
 
 
@@ -21,16 +26,31 @@ class UNREALGOOGLEANALYTICS_API UUGACoreSettings : public UDeveloperSettings
 	
 public:
 	UUGACoreSettings();
-	
+
+	/** 
+	 *  Use SetClient on the Google Analytics Subsystem to set the Client Id yourself.
+	 *  A Client Id is required to start a session.
+	 */
 	UPROPERTY(Config, EditAnywhere, Category="Core")
 	bool bAutoSetClientId;
 	
+	/** 
+	 *  Use StartSession on the Google Analytics Subsystem to start a new session.
+	 *  A Client Id is required to start a session.
+	 */
 	UPROPERTY(Config, EditAnywhere, Category="Core")
 	bool bAutoStartSession;
 	
 	/** In milliseconds */
-	UPROPERTY(Config, EditAnywhere, Category="Core", meta=(ForceUnits="Milliseconds"))
+	UPROPERTY(Config, EditAnywhere, Category="Core", meta=(ForceUnits="Milliseconds", UIMin=0, ClampMin=0))
 	float DefaultEngagementTime;
+	
+	/** 
+	 * At what interval do we automatically flush cached events.
+	 * In seconds.
+	 */
+	UPROPERTY(Config, EditAnywhere, Category="Core", meta=(ForceUnits="Seconds", UIMin=0, ClampMin=0))
+	float EventFlushIntervalTime;
 	
 	/** 
 	 * Measurement ID, starts with G-
