@@ -3,7 +3,7 @@ An UE5 plugin capable of sending events to Google Analytics through HTTP request
 
 There is 2 core classes to use to make and send events: `Google Analytics Subsystem` and `Google Analytics Library`.
 
-There is XXXX struct types: 
+There is 5 core struct types: 
 - The actual event `FUGAEvent` (C++ only)
 - `Google Analytics Event Name`
 - `Google Analytics Attribute`
