@@ -37,35 +37,35 @@ FUGAAttributeValue UUGAGoogleAnalyticsLibrary::MakeAttributeValueFromString(FStr
 	return FUGAAttributeValue(Value);
 }
 
-FUGAAttributeValue UUGAGoogleAnalyticsLibrary::MakeAttributeValueFromName(FName Value)
+FUGAAttributeValue UUGAGoogleAnalyticsLibrary::MakeAttributeValueFromName(FName KeyName)
 {
-	return FUGAAttributeValue(Value);
+	return FUGAAttributeValue(KeyName);
 }
 
 
-FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithBool(FName Name, bool bValue)
+FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithBool(FName KeyName, bool bValue)
 {
-	return FUGAAttribute(FUGAAttributeKey(Name), FUGAAttributeValue(bValue));
+	return FUGAAttribute(FUGAAttributeKey(KeyName), FUGAAttributeValue(bValue));
 }
 
-FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithInteger(FName Name, int32 Value)
+FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithInteger(FName KeyName, int32 Value)
 {
-	return FUGAAttribute(FUGAAttributeKey(Name), FUGAAttributeValue(Value));
+	return FUGAAttribute(FUGAAttributeKey(KeyName), FUGAAttributeValue(Value));
 }
 
-FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithFloat(FName Name, float Value)
+FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithFloat(FName KeyName, float Value)
 {
-	return FUGAAttribute(FUGAAttributeKey(Name), FUGAAttributeValue(Value));
+	return FUGAAttribute(FUGAAttributeKey(KeyName), FUGAAttributeValue(Value));
 }
 
-FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithString(FName Name, FString Value)
+FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithString(FName KeyName, FString Value)
 {
-	return FUGAAttribute(FUGAAttributeKey(Name), FUGAAttributeValue(Value));
+	return FUGAAttribute(FUGAAttributeKey(KeyName), FUGAAttributeValue(Value));
 }
 
-FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithName(FName Name, FName Value)
+FUGAAttribute UUGAGoogleAnalyticsLibrary::MakeAttributeFromNameWithName(FName KeyName, FName Value)
 {
-	return FUGAAttribute(FUGAAttributeKey(Name), FUGAAttributeValue(Value));
+	return FUGAAttribute(FUGAAttributeKey(KeyName), FUGAAttributeValue(Value));
 }
 
 TArray<FName> UUGAGoogleAnalyticsLibrary::GetEventNameOptions()

@@ -19,7 +19,7 @@ namespace UGA
 }
 
 
-UCLASS(Config=Engine, DefaultConfig, DisplayName="Unreal Google Analytics Settings")
+UCLASS(Config=Engine, DefaultConfig, DisplayName="Unreal Google Analytics")
 class UNREALGOOGLEANALYTICS_API UUGACoreSettings : public UDeveloperSettings
 {
 	GENERATED_BODY()
@@ -44,13 +44,6 @@ public:
 	/** In milliseconds */
 	UPROPERTY(Config, EditAnywhere, Category="Core", meta=(ForceUnits="Milliseconds", UIMin=0, ClampMin=0))
 	float DefaultEngagementTime;
-	
-	/** 
-	 * At what interval do we automatically flush cached events.
-	 * In seconds.
-	 */
-	UPROPERTY(Config, EditAnywhere, Category="Core", meta=(ForceUnits="Seconds", UIMin=0, ClampMin=0))
-	float EventFlushIntervalTime;
 	
 	/** 
 	 * Measurement ID, starts with G-
@@ -82,8 +75,15 @@ public:
 	 *  Note: if you rename an existing event name, it won't be updated where you used it.
 	 *  TODO: Add validation to detect renamed exisitng event names
 	 */
-	UPROPERTY(Config, EditAnywhere, Category="Attributes")
+	UPROPERTY(Config, EditAnywhere, Category="Events")
 	TArray<FName> EventNames;
+	
+	/** 
+	 * At what interval do we automatically flush cached events.
+	 * In seconds.
+	 */
+	UPROPERTY(Config, EditAnywhere, Category="Events", meta=(ForceUnits="Seconds", UIMin=0, ClampMin=0))
+	float EventFlushIntervalTime;
 	
 	
 	virtual FName GetCategoryName() const override { return "Plugins"; };

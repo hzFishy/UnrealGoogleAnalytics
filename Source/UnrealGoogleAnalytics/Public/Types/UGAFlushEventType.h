@@ -12,6 +12,6 @@ enum class EUGAFlushEventType : uint8
 	None,
 	/** Only flush this event */
 	FlushSingle,
-	/** Flush all cache events */
+	/** Flush this event and all other cached events */
 	FlushAll,
 };

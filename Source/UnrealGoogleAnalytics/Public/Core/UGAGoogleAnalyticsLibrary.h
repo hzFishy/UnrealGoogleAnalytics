@@ -37,23 +37,23 @@ public:
 	static FUGAAttributeValue MakeAttributeValueFromString(FString Value);
 	
 	UFUNCTION(BlueprintPure, Category="GoogleAnalytics", meta=(BlueprintThreadSafe))
-	static FUGAAttributeValue MakeAttributeValueFromName(FName Value);
+	static FUGAAttributeValue MakeAttributeValueFromName(FName KeyName);
 	
 	
 	UFUNCTION(BlueprintPure, Category="GoogleAnalytics", meta=(BlueprintThreadSafe))
-	static FUGAAttribute MakeAttributeFromNameWithBool(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName Name, bool bValue);
+	static FUGAAttribute MakeAttributeFromNameWithBool(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName KeyName, bool bValue);
 	
 	UFUNCTION(BlueprintPure, Category="GoogleAnalytics", meta=(BlueprintThreadSafe))
-	static FUGAAttribute MakeAttributeFromNameWithInteger(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName Name, int32 Value);
+	static FUGAAttribute MakeAttributeFromNameWithInteger(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName KeyName, int32 Value);
 	
 	UFUNCTION(BlueprintPure, Category="GoogleAnalytics", meta=(BlueprintThreadSafe))
-	static FUGAAttribute MakeAttributeFromNameWithFloat(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName Name, float Value);
+	static FUGAAttribute MakeAttributeFromNameWithFloat(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName KeyName, float Value);
 	
 	UFUNCTION(BlueprintPure, Category="GoogleAnalytics", meta=(BlueprintThreadSafe))
-	static FUGAAttribute MakeAttributeFromNameWithString(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName Name, FString Value);
+	static FUGAAttribute MakeAttributeFromNameWithString(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName KeyName, FString Value);
 	
 	UFUNCTION(BlueprintPure, Category="GoogleAnalytics", meta=(BlueprintThreadSafe))
-	static FUGAAttribute MakeAttributeFromNameWithName(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName Name, FName Value);
+	static FUGAAttribute MakeAttributeFromNameWithName(UPARAM(meta=(GetOptions="UnrealGoogleAnalytics.UGAGoogleAnalyticsLibrary.GetAttributeKeyOptions")) FName KeyName, FName Value);
 	
 	
 	UFUNCTION()
