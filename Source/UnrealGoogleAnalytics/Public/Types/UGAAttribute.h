@@ -22,9 +22,9 @@ public:
 	FUGAAttribute(FUGAAttributeKey InKey, FUGAAttributeValue InValue);
 	
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attribute")
 	FUGAAttributeKey Key;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attribute")
 	FUGAAttributeValue Value;
 };
