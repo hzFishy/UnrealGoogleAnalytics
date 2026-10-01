@@ -12,10 +12,10 @@ There is XXXX struct types:
 
 
 Examples of a few nodes.
-![ExampleNodes.jpg](ExampleNodes.jpg)
+![ExampleNodes](docs/ExampleNodes.jpg)
 
 Example of the events being showed on the dashboard:
-![ExampleGoogleDashboard.jpg](ExampleGoogleDashboard.jpg)
+![ExampleGoogleDashboard](docs/ExampleGoogleDashboard.jpg)
 
 **WARNING** <br>
 Since the data is sent through HTTP requests any malicious user could get your secret token and send fake events.
@@ -35,4 +35,4 @@ There are many solutions to safely send data to Google Analytics, here is a list
 ` section).
 6. You can now send events with or without parameters (Called `Attributes` in this plugin).
 7. Add all your event names and attribute keys in the `Project Settings` to use the dropdown feature.
-![ExampleProjectSettings.jpg](ExampleProjectSettings.jpg)
+![ExampleProjectSettings](docs/ExampleProjectSettings.jpg)
